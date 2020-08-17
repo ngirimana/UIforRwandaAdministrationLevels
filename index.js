@@ -5,13 +5,13 @@ let districts = null;
 let sectors = null;
 let cells = null;
 let villages = null;
-let provinceOptions = "";
-let searchValue = null;
+
 /*
 getting provinces;
 
 */
 const provinceHandler = () => {
+  let provinceOptions = `<option  disabled selected  value=''> Select Province</option>`;
   fetch("https://rwanda.p.rapidapi.com/provinces", {
     method: "GET",
     headers: {
@@ -37,8 +37,8 @@ provinceHandler();
 
 const districtHandler = () => {
   let selectedprovince = document.querySelector("#provinces").value;
-  let districtOptions;
-
+  let districtOptionslet= `<option  disabled selected  value=''> Select District</option>`;
+if(selectedprovince){
   fetch(`https://rwanda.p.rapidapi.com/districts?p=${selectedprovince}`, {
     method: "GET",
     headers: {
@@ -59,6 +59,7 @@ const districtHandler = () => {
       console.log(err);
     });
 };
+}
 
 districtHandler();
 
@@ -67,7 +68,7 @@ const sectorsHandler = () => {
   let selectedProvince = document.querySelector("#provinces").value;
   let selectedDistrict = document.querySelector("#districts").value;
   if (selectedDistrict) {
-    let sectorsOptions;
+    let sectorsOptionslet=`<option  disabled selected  value=''> Select Sector</option>`;
     fetch(
       `https://rwanda.p.rapidapi.com/sectors?d=${selectedDistrict}&p=${selectedProvince}`,
       {
@@ -97,7 +98,7 @@ const sectorsHandler = () => {
 sectorsHandler();
 // //Cells
 const cellsHandler = () => {
-  let cellsOptions = "";
+  let cellsOptions = `<option  disabled selected  value=''> Select Cell</option>`;
   let url = `https://rwanda.p.rapidapi.com/cells?d=bugesera&p=east&s=gashora`;
   let selectedProvince = document.querySelector("#provinces").value;
   let selectedDistrict = document.querySelector("#districts").value;
@@ -130,7 +131,7 @@ cellsHandler();
 
 // //villages
 const villagesHandler = () => {
-  let villagesOptions;
+  let villagesOptions=`<option  disabled selected value=''> Select Village</option>`
   let selectedProvince = document.querySelector("#provinces").value;
   let selectedDistrict = document.querySelector("#districts").value;
   let selectedSector = document.querySelector("#sectors").value;
