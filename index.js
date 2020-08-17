@@ -38,7 +38,7 @@ provinceHandler();
 const districtHandler = () => {
   let districtOptions;
   let selectedprovince = document.querySelector("#provinces").value;
-  districtOptions+= `<option  disabled selected  value=''> Select District</option>`;
+  districtOptions+= `<option  disabled selected  value=''> --- Select District --- </option>`;
 if(selectedprovince){
   fetch(`https://rwanda.p.rapidapi.com/districts?p=${selectedprovince}`, {
     method: "GET",
@@ -55,7 +55,6 @@ if(selectedprovince){
         districtOptions += `<option  value='${transformedDistricts[i]}'>${transformedDistricts[i]}</option>`;
         document.getElementById("districts").innerHTML = districtOptions;
       }
-      console.log(districts)
     })
     .catch((err) => {
       console.log(err);
@@ -70,7 +69,7 @@ const sectorsHandler = () => {
   let selectedProvince = document.querySelector("#provinces").value;
   let selectedDistrict = document.querySelector("#districts").value;
   if (selectedDistrict) {
-    let sectorsOptions=`<option  disabled selected  value=''> Select Sector</option>`;
+    let sectorsOptions=`<option  disabled selected  value=''>--- Select  Sector ---</option>`;
     fetch(
       `https://rwanda.p.rapidapi.com/sectors?d=${selectedDistrict}&p=${selectedProvince}`,
       {
@@ -100,7 +99,7 @@ const sectorsHandler = () => {
 sectorsHandler();
 // //Cells
 const cellsHandler = () => {
-  let cellsOptions = `<option  disabled selected  value=''> Select Cell</option>`;
+  let cellsOptions = `<option  disabled selected  value=''>--- Select Cell---</option>`;
   let url = `https://rwanda.p.rapidapi.com/cells?d=bugesera&p=east&s=gashora`;
   let selectedProvince = document.querySelector("#provinces").value;
   let selectedDistrict = document.querySelector("#districts").value;
@@ -133,7 +132,7 @@ cellsHandler();
 
 // //villages
 const villagesHandler = () => {
-  let villagesOptions=`<option  disabled selected value=''> Select Village</option>`
+  let villagesOptions=`<option  disabled selected value=''> --- Select Village ---</option>`
   let selectedProvince = document.querySelector("#provinces").value;
   let selectedDistrict = document.querySelector("#districts").value;
   let selectedSector = document.querySelector("#sectors").value;
