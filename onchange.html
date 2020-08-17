@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Selected Option Value</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <select id="list" onchange="getSelectValue();">
+            <option value="js">JavaScript</option>
+            <option value="php">PHP</option>
+            <option value="c#">Csharp</option>
+            <option value="java">Java</option>
+            <option value="node">Node.js</option>
+        </select>
+    <script>
+        
+        function getSelectValue()
+        {
+            var selectedValue = document.getElementById("list").value;
+            console.log(selectedValue);
+        }
+        getSelectValue();
+
+    </script>
+    </body>
+</html>
